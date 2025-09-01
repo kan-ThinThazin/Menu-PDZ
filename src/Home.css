@@ -1,0 +1,86 @@
+
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+body {
+  font-family: 'Noto Sans Myanmar', sans-serif;
+}
+
+
+.title-font {
+  font-family: 'Playfair Display', serif;
+}
+
+/* .menu-item::after {
+  content: "";
+  display: block;
+  width: 100%;
+  border-bottom: 3px dotted #ff0000;
+  position: absolute;
+  bottom: 0.4em;
+  z-index: -1;
+} */
+
+
+.leaf-divider {
+  height: 40px;
+  background: linear-gradient(to right, #f2ff00 20%, #a0d87d 50%, #ff5016 80%);
+  background-size: 200% 100%;
+  clip-path: polygon(
+    0% 50%, 10% 55%, 20% 45%, 30% 60%, 40% 50%, 
+    50% 55%, 60% 45%, 70% 60%, 80% 50%, 90% 55%, 100% 50%, 
+    100% 100%, 0% 100%
+  );
+  animation: leafWave 6s linear infinite;
+}
+
+@keyframes leafWave {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 0%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Gradient text animation */
+.gradient-text {
+  background: linear-gradient(270deg, #f00, #ff0, #0f0, #f00);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 5s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* @keyframes fadeInLeft {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  0% { opacity: 0; transform: translateX(20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.8s ease forwards;
+}
+
+.animate-fadeInRight {
+  animation: fadeInRight 0.8s ease forwards;
+} */
+@keyframes fadeInLeft {
+  0% { opacity: 0; transform: translateX(-30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  0% { opacity: 0; transform: translateX(30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fadeInLeft { animation: fadeInLeft 0.8s ease forwards; }
+.animate-fadeInRight { animation: fadeInRight 0.8s ease forwards; }
