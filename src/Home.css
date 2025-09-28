@@ -84,3 +84,12 @@ body {
 
 .animate-fadeInLeft { animation: fadeInLeft 0.8s ease forwards; }
 .animate-fadeInRight { animation: fadeInRight 0.8s ease forwards; }
+
+/*.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+*/
