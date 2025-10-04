@@ -54,17 +54,16 @@ function HomePage() {
       </div>
 
       {/* Category filters - sticky on mobile */}
-      <div className="sticky top-[56px] z-40 bg-white/95 backdrop-blur-md border-b border-emerald-100 px-3 py-2 md:static md:bg-transparent md:backdrop-blur-none md:border-0 md:px-0 md:py-0">
-        <div className="flex gap-2 overflow-x-auto scrollbar-hide md:flex-wrap md:justify-center md:overflow-visible">
+      <div className="sticky top-[56px] z-40 bg-white/90 backdrop-blur-md border-b border-emerald-100 shadow-sm px-3 py-2 rounded-b-2xl md:static md:bg-transparent md:shadow-none md:border-0 md:px-0 md:py-0">
+        <div className="flex gap-3 overflow-x-auto scrollbar-hide px-3 py-3 md:flex-wrap md:justify-center md:overflow-visible">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`flex-shrink-0 px-3 py-1.5 text-xs md:text-base font-myanmar rounded-full border transition-all duration-500
-                ${
-                  activeCategory === category
-                    ? "bg-gradient-to-r from-emerald-500 to-green-400 text-emerald-900 border-emerald-600 shadow-lg scale-105" : 
-                    "bg-white text-emerald-800 border-emerald-300 hover:shadow-md hover:text-emerald-600 hover:-translate-y-1"
+              className={`flex-shrink-0 px-4 py-2 text-sm md:text-base font-myanmar rounded-full border transition-all duration-500 shadow-sm
+                ${activeCategory === category
+                  ? "bg-gradient-to-r from-emerald-500 to-green-400 text-emerald-900 border-emerald-600 shadow-lg scale-105" :
+                  "bg-white text-emerald-800 border-emerald-300 hover:shadow-md hover:text-emerald-600 hover:-translate-y-1"
                 }`}
             >
               {category}
@@ -78,43 +77,40 @@ function HomePage() {
         {Object.entries(filteredMenu).map(([section, items], secIdx) => (
           <section
             key={section}
-            className={`relative py-6 px-3 md:py-12 md:px-6 rounded-2xl md:rounded-3xl ${
-              secIdx % 2 === 0
-                ? "bg-gradient-to-r from-emerald-50 to-white"
-                : "bg-gradient-to-r from-white to-emerald-50"
-            }`}
+            className={`relative py-6 px-3 md:py-12 md:px-6 rounded-2xl md:rounded-3xl ${secIdx % 2 === 0
+              ? "bg-gradient-to-r from-emerald-50 to-white"
+              : "bg-gradient-to-r from-white to-emerald-50"
+              }`}
           >
             {/* Section title */}
             <h2 className="text-xl md:text-3xl font-extrabold text-emerald-900 mb-6 md:mb-12 text-center">
               {section}
               <span className="block w-12 md:w-20 h-1 bg-gradient-to-r from-green-400 to-emerald-600 mx-auto mt-2 rounded-full" />
             </h2>
-            <ul className="space-y-4 md:space-y-8">
+            <ul className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
               {items.map((item, idx) => (
                 <li
                   key={idx}
-                  className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6 p-4 md:p-6 rounded-xl md:rounded-2xl bg-white/80 backdrop-blur-md shadow-sm md:shadow-md transition-all duration-300 hover:scale-[1.01] hover:shadow-lg"
+                  className="flex flex-col items-center text-center p-2 md:p-4 rounded-lg hover:bg-emerald-50 transition-all duration-200"
                 >
                   {/* Item */}
-                  <div className="flex items-center gap-3 md:gap-4 w-full md:w-1/2">
-                    <img
-                      src={teaIcon}
-                      alt="Tea icon"
-                      className="w-8 h-8 md:w-14 md:h-14 rounded-full"
-                    />
-                    <span className="text-base md:text-xl font-myanmar text-emerald-900">
-                      {item.name}
-                    </span>
-                  </div>
+                  <img
+                    src={teaIcon}
+                    alt={item.name}
+                    className="w-10 h-10 md:w-14 md:h-14 rounded-full object-cover mb-2 opacity-90"
+                  />
+                  <span className="text-[13px] md:text-base font-myanmar text-emerald-900 leading-tight">
+                    {item.name}
+                  </span>
 
                   {/* Prices */}
-                  <div className="flex flex-wrap gap-2 justify-end w-full md:w-1/2">
+                  <div className="flex flex-wrap gap-1 justify-center mt-1">
                     {[item.price, item.price2, item.price3]
                       .filter(Boolean)
                       .map((p, i) => (
                         <span
                           key={i}
-                          className="px-3 py-1 text-xs md:text-sm rounded-full bg-gradient-to-r from-green-400 to-emerald-500 text-green-500 font-semibold shadow hover:shadow-md transition-transform hover:-translate-y-0.5"
+                          className="px-2 py-0.5 text-[11px] md:text-sm rounded-full bg-emerald-100 text-emerald-700"
                         >
                           {p}
                         </span>
@@ -177,15 +173,27 @@ export default function App() {
 
         {/* Mobile Nav (overlay, absolute under header) */}
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-[56px] left-0 w-full bg-white shadow-md z-40">
-            <nav className="flex flex-col px-6 py-4 gap-3">
-              <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
+          <div className="md:hidden fixed top-[56px] left-0 w-full bg-white/95 backdrop-blur-md shadow-lg z-50 border-b border-emerald-100 rounded-b-xl">
+            <nav className="flex flex-col px-6 py-4 gap-4 text-emerald-800 font-medium">
+              <Link
+                to="/"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="hover:text-emerald-600"
+              >
                 Home
               </Link>
-              <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>
+              <Link
+                to="/about"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="hover:text-emerald-600"
+              >
                 About Us
               </Link>
-              <Link to="/special" onClick={() => setIsMobileMenuOpen(false)}>
+              <Link
+                to="/special"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="hover:text-emerald-600"
+              >
                 Special
               </Link>
             </nav>
