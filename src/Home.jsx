@@ -87,14 +87,15 @@ function HomePage() {
               {section}
               <span className="block w-12 md:w-20 h-1 bg-gradient-to-r from-green-400 to-emerald-600 mx-auto mt-2 rounded-full" />
             </h2>
-            <ul className="space-y-4 md:space-y-8">
+            {/* Menu list */}
+            <ul className="space-y-3 md:space-y-4">
               {items.map((item, idx) => (
                 <li
                   key={idx}
-                  className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6 p-4 md:p-6 rounded-xl md:rounded-2xl bg-white/80 backdrop-blur-md shadow-sm md:shadow-md transition-all duration-300 hover:scale-[1.01] hover:shadow-lg"
+                  className="flex items-center justify-between gap-3 md:gap-6 p-4 md:p-6 rounded-xl md:rounded-2xl bg-white/80 backdrop-blur-md shadow-sm md:shadow-md transition-all duration-300 hover:scale-[1.01] hover:shadow-lg"
                 >
-                  {/* Item */}
-                  <div className="flex items-center gap-3 md:gap-4 w-full md:w-1/2">
+                  {/* Item (left side) */}
+                  <div className="flex items-center gap-3 md:gap-4 w-2/3">
                     <img
                       src={teaIcon}
                       alt="Tea icon"
@@ -105,8 +106,8 @@ function HomePage() {
                     </span>
                   </div>
 
-                  {/* Prices */}
-                  <div className="flex flex-wrap gap-2 justify-end w-full md:w-1/2">
+                  {/* Prices (right side) */}
+                  <div className="flex flex-wrap gap-2 justify-end w-1/3">
                     {[item.price, item.price2, item.price3]
                       .filter(Boolean)
                       .map((p, i) => (
