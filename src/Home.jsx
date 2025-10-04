@@ -78,8 +78,8 @@ function HomePage() {
           <section
             key={section}
             className={`relative py-6 px-3 md:py-12 md:px-6 rounded-2xl md:rounded-3xl ${secIdx % 2 === 0
-              ? "bg-gradient-to-r from-emerald-50 to-white"
-              : "bg-gradient-to-r from-white to-emerald-50"
+                ? "bg-gradient-to-r from-emerald-50 to-white"
+                : "bg-gradient-to-r from-white to-emerald-50"
               }`}
           >
             {/* Section title */}
@@ -87,30 +87,32 @@ function HomePage() {
               {section}
               <span className="block w-12 md:w-20 h-1 bg-gradient-to-r from-green-400 to-emerald-600 mx-auto mt-2 rounded-full" />
             </h2>
-            <ul className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+            <ul className="space-y-4 md:space-y-8">
               {items.map((item, idx) => (
                 <li
                   key={idx}
-                  className="flex flex-col items-center text-center p-2 md:p-4 rounded-lg hover:bg-emerald-50 transition-all duration-200"
+                  className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6 p-4 md:p-6 rounded-xl md:rounded-2xl bg-white/80 backdrop-blur-md shadow-sm md:shadow-md transition-all duration-300 hover:scale-[1.01] hover:shadow-lg"
                 >
                   {/* Item */}
-                  <img
-                    src={teaIcon}
-                    alt={item.name}
-                    className="w-10 h-10 md:w-14 md:h-14 rounded-full object-cover mb-2 opacity-90"
-                  />
-                  <span className="text-[13px] md:text-base font-myanmar text-emerald-900 leading-tight">
-                    {item.name}
-                  </span>
+                  <div className="flex items-center gap-3 md:gap-4 w-full md:w-1/2">
+                    <img
+                      src={teaIcon}
+                      alt="Tea icon"
+                      className="w-8 h-8 md:w-14 md:h-14 rounded-full"
+                    />
+                    <span className="text-base md:text-xl font-myanmar text-emerald-900">
+                      {item.name}
+                    </span>
+                  </div>
 
                   {/* Prices */}
-                  <div className="flex flex-wrap gap-1 justify-center mt-1">
+                  <div className="flex flex-wrap gap-2 justify-end w-full md:w-1/2">
                     {[item.price, item.price2, item.price3]
                       .filter(Boolean)
                       .map((p, i) => (
                         <span
                           key={i}
-                          className="px-2 py-0.5 text-[11px] md:text-sm rounded-full bg-emerald-100 text-emerald-700"
+                          className="px-3 py-1 text-xs md:text-sm rounded-full bg-gradient-to-r from-green-400 to-emerald-500 text-green-500 font-semibold shadow hover:shadow-md transition-transform hover:-translate-y-0.5"
                         >
                           {p}
                         </span>
