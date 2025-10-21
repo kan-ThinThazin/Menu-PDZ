@@ -21,7 +21,7 @@ body {
 } 
 */
 
-/* Leaf divider animation */
+/* Leaf divider animations */
 .leaf-divider {
   height: 40px;
   background: linear-gradient(to right, #f2ff00 20%, #a0d87d 50%, #ff5016 80%);
